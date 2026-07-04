@@ -39,69 +39,69 @@ const travelGeos = [
 
 // ---- Panel 1: 瀑布流照片墙数据 (全量 45 张) ----
 const PHOTOS = [
-  { img: '/多洛米蒂.jpg',   location: 'italy',       label: 'DOLOMITES, ITALY' },
-  { img: '/巴黎.jpg',       location: 'france',      label: 'PARIS, FRANCE' },
-  { img: '/挪威.jpg',       location: 'norway',      label: 'OSLO, NORWAY' },
-  { img: '/米兰.jpg',       location: 'italy',       label: 'MILANO, ITALY' },
-  { img: '/布拉格.jpg',     location: 'czech',       label: 'PRAHA, CZECH' },
-  { img: '/地坛.jpg',       location: 'beijing',     label: 'BEIJING, CHINA' },
-  { img: '/瑞士.jpg',       location: 'switzerland', label: 'GRINDELWALD, SWITZERLAND' },
-  { img: '/威尼斯.jpg',     location: 'italy',       label: 'VENEZIA, ITALY' },
-  { img: '/布达佩斯.jpg',   location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
-  { img: '/泰国.jpg',       location: 'thailand',    label: 'BANGKOK, THAILAND' },
-  { img: '/哈尔滨.jpg',     location: 'harbin',      label: 'HARBIN, CHINA' },
-  { img: '/罗马.jpg',       location: 'italy',       label: 'ROMA, ITALY' },
-  { img: '/巴黎2.jpg',      location: 'france',      label: 'PARIS, FRANCE' },
-  { img: '/挪威2.jpg',      location: 'norway',      label: 'BERGEN, NORWAY' },
-  { img: '/扬州.jpg',       location: 'jiangsu',     label: 'YANGZHOU, CHINA' },
-  { img: '/西班牙.jpg',     location: 'spain',       label: 'BARCELONA, SPAIN' },
-  { img: '/米兰2.jpg',      location: 'italy',       label: 'MILANO, ITALY' },
-  { img: '/布拉格2.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
-  { img: '/希腊.jpg',       location: 'greece',      label: 'ATHENS, GREECE' },
-  { img: '/多洛米蒂2.jpg',  location: 'italy',       label: 'DOLOMITES, ITALY' },
-  { img: '/瑞士2.jpg',      location: 'switzerland', label: 'ZURICH, SWITZERLAND' },
-  { img: '/威尼斯2.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
-  { img: '/布达佩斯2.jpg',  location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
-  { img: '/重庆.jpg',       location: 'chongqing',   label: 'CHONGQING, CHINA' },
-  { img: '/巴黎3.jpg',      location: 'france',      label: 'PARIS, FRANCE' },
-  { img: '/罗马2.jpg',      location: 'italy',       label: 'ROMA, ITALY' },
-  { img: '/挪威3.jpg',      location: 'norway',      label: 'TROMSO, NORWAY' },
-  { img: '/葡萄牙.jpg',     location: 'portugal',    label: 'LISBOA, PORTUGAL' },
-  { img: '/米兰3.jpg',      location: 'italy',       label: 'MILANO, ITALY' },
-  { img: '/布拉格3.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
-  { img: '/扬州2.jpg',      location: 'jiangsu',     label: 'YANGZHOU, CHINA' },
-  { img: '/西西里.jpg',     location: 'italy',       label: 'SICILIA, ITALY' },
-  { img: '/西班牙2.jpg',    location: 'spain',       label: 'BARCELONA, SPAIN' },
-  { img: '/泰国2.jpg',      location: 'thailand',    label: 'CHIANG MAI, THAILAND' },
-  { img: '/威尼斯3.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
-  { img: '/尼斯.jpg',       location: 'france',      label: 'NICE, FRANCE' },
-  { img: '/罗马3.jpg',      location: 'italy',       label: 'ROMA, ITALY' },
-  { img: '/布达佩斯3.jpg',  location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
-  { img: '/挪威4.jpg',      location: 'norway',      label: 'LOTOFEN, NORWAY' },
-  { img: '/布拉格4.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
-  { img: '/卡塔尼亚.jpg',   location: 'italy',       label: 'CATANIA, ITALY' },
-  { img: '/葡萄牙2.jpg',    location: 'portugal',    label: 'LISBOA, PORTUGAL' },
-  { img: '/维也纳.jpg',     location: 'austria',     label: 'WIEN, AUSTRIA' },
-  { img: '/威尼斯4.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
-  { img: '/泰国3.jpg',      location: 'thailand',    label: 'PHUKET, THAILAND' },
-  { img: '/尼斯2.jpg',      location: 'france',      label: 'NICE, FRANCE' },
-  { img: '/希腊2.jpg',      location: 'greece',      label: 'SANTORINI, GREECE' },
-  { img: '/希腊3.jpg',      location: 'greece',      label: 'MYKONOS, GREECE' },
-  { img: '/西西里2.jpg',    location: 'italy',       label: 'SICILIA, ITALY' },
+  { img: './多洛米蒂.jpg',   location: 'italy',       label: 'DOLOMITES, ITALY' },
+  { img: './巴黎.jpg',       location: 'france',      label: 'PARIS, FRANCE' },
+  { img: './挪威.jpg',       location: 'norway',      label: 'OSLO, NORWAY' },
+  { img: './米兰.jpg',       location: 'italy',       label: 'MILANO, ITALY' },
+  { img: './布拉格.jpg',     location: 'czech',       label: 'PRAHA, CZECH' },
+  { img: './地坛.jpg',       location: 'beijing',     label: 'BEIJING, CHINA' },
+  { img: './瑞士.jpg',       location: 'switzerland', label: 'GRINDELWALD, SWITZERLAND' },
+  { img: './威尼斯.jpg',     location: 'italy',       label: 'VENEZIA, ITALY' },
+  { img: './布达佩斯.jpg',   location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
+  { img: './泰国.jpg',       location: 'thailand',    label: 'BANGKOK, THAILAND' },
+  { img: './哈尔滨.jpg',     location: 'harbin',      label: 'HARBIN, CHINA' },
+  { img: './罗马.jpg',       location: 'italy',       label: 'ROMA, ITALY' },
+  { img: './巴黎2.jpg',      location: 'france',      label: 'PARIS, FRANCE' },
+  { img: './挪威2.jpg',      location: 'norway',      label: 'BERGEN, NORWAY' },
+  { img: './扬州.jpg',       location: 'jiangsu',     label: 'YANGZHOU, CHINA' },
+  { img: './西班牙.jpg',     location: 'spain',       label: 'BARCELONA, SPAIN' },
+  { img: './米兰2.jpg',      location: 'italy',       label: 'MILANO, ITALY' },
+  { img: './布拉格2.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
+  { img: './希腊.jpg',       location: 'greece',      label: 'ATHENS, GREECE' },
+  { img: './多洛米蒂2.jpg',  location: 'italy',       label: 'DOLOMITES, ITALY' },
+  { img: './瑞士2.jpg',      location: 'switzerland', label: 'ZURICH, SWITZERLAND' },
+  { img: './威尼斯2.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
+  { img: './布达佩斯2.jpg',  location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
+  { img: './重庆.jpg',       location: 'chongqing',   label: 'CHONGQING, CHINA' },
+  { img: './巴黎3.jpg',      location: 'france',      label: 'PARIS, FRANCE' },
+  { img: './罗马2.jpg',      location: 'italy',       label: 'ROMA, ITALY' },
+  { img: './挪威3.jpg',      location: 'norway',      label: 'TROMSO, NORWAY' },
+  { img: './葡萄牙.jpg',     location: 'portugal',    label: 'LISBOA, PORTUGAL' },
+  { img: './米兰3.jpg',      location: 'italy',       label: 'MILANO, ITALY' },
+  { img: './布拉格3.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
+  { img: './扬州2.jpg',      location: 'jiangsu',     label: 'YANGZHOU, CHINA' },
+  { img: './西西里.jpg',     location: 'italy',       label: 'SICILIA, ITALY' },
+  { img: './西班牙2.jpg',    location: 'spain',       label: 'BARCELONA, SPAIN' },
+  { img: './泰国2.jpg',      location: 'thailand',    label: 'CHIANG MAI, THAILAND' },
+  { img: './威尼斯3.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
+  { img: './尼斯.jpg',       location: 'france',      label: 'NICE, FRANCE' },
+  { img: './罗马3.jpg',      location: 'italy',       label: 'ROMA, ITALY' },
+  { img: './布达佩斯3.jpg',  location: 'hungary',     label: 'BUDAPEST, HUNGARY' },
+  { img: './挪威4.jpg',      location: 'norway',      label: 'LOTOFEN, NORWAY' },
+  { img: './布拉格4.jpg',    location: 'czech',       label: 'PRAHA, CZECH' },
+  { img: './卡塔尼亚.jpg',   location: 'italy',       label: 'CATANIA, ITALY' },
+  { img: './葡萄牙2.jpg',    location: 'portugal',    label: 'LISBOA, PORTUGAL' },
+  { img: './维也纳.jpg',     location: 'austria',     label: 'WIEN, AUSTRIA' },
+  { img: './威尼斯4.jpg',    location: 'italy',       label: 'VENEZIA, ITALY' },
+  { img: './泰国3.jpg',      location: 'thailand',    label: 'PHUKET, THAILAND' },
+  { img: './尼斯2.jpg',      location: 'france',      label: 'NICE, FRANCE' },
+  { img: './希腊2.jpg',      location: 'greece',      label: 'SANTORINI, GREECE' },
+  { img: './希腊3.jpg',      location: 'greece',      label: 'MYKONOS, GREECE' },
+  { img: './西西里2.jpg',    location: 'italy',       label: 'SICILIA, ITALY' },
 ]
 
 // ---- Panel 2: 户外韧性 ----
 const OUTDOOR_COLS = [
-  { label: 'ROAD CYCLING',  img: '/微信图片_20260701173437_193_59.jpg', stats: [{ k: 'TOTAL CYCLING DISTANCE', v: '14000 KM' }, { k: 'TOTAL ELEVATION', v: '120000 M' }, { k: 'STATUS', v: 'UNSTOPPABLE' }] },
-  { label: 'ALPINISM',      img: '/微信图片_20260701112338_174_59.jpg', stats: [{ k: 'ALTITUDE', v: '5000 M+' },          { k: 'STATUS',   v: 'COMPLETED' }] },
-  { label: 'TRAIL RUNNING', img: '/微信图片_20260701112339_175_59.jpg', stats: [{ k: 'TOTAL RUNNING DISTANCE', v: '3200 KM' }, { k: 'HALF MARATHON PB', v: '1:48:12' }] },
-  { label: 'MARATHON',      img: '/微信图片_20260630123233_6372_117.jpg',stats: [{ k: 'HALF MARATHON PB', v: '1:48:12' }, { k: 'MINDSET', v: 'PERSISTENT' }] },
+  { label: 'ROAD CYCLING',  img: './微信图片_20260701173437_193_59.jpg', stats: [{ k: 'TOTAL CYCLING DISTANCE', v: '14000 KM' }, { k: 'TOTAL ELEVATION', v: '120000 M' }, { k: 'STATUS', v: 'UNSTOPPABLE' }] },
+  { label: 'ALPINISM',      img: './微信图片_20260701112338_174_59.jpg', stats: [{ k: 'ALTITUDE', v: '5000 M+' },          { k: 'STATUS',   v: 'COMPLETED' }] },
+  { label: 'TRAIL RUNNING', img: './微信图片_20260701112339_175_59.jpg', stats: [{ k: 'TOTAL RUNNING DISTANCE', v: '3200 KM' }, { k: 'HALF MARATHON PB', v: '1:48:12' }] },
+  { label: 'MARATHON',      img: './微信图片_20260630123233_6372_117.jpg',stats: [{ k: 'HALF MARATHON PB', v: '1:48:12' }, { k: 'MINDSET', v: 'PERSISTENT' }] },
 ]
 
 // ---- Panel 3: 思想年鉴 ----
 const EDITORIALS = [
-  { title: '《送别 2025 · 启程》', subtitle: '技术跃迁与跨界破局', cover: '/微信图片_20260701150324_178_59.jpg', excerpt: '从产品设计到产品经理的跨越，AI 工具链重塑工作流的实战记录。这一年，将意图理解与硬件约束深度耦合，在不确定中寻找确定性的方法论沉淀。', url: '#' },
-  { title: '《送别 2024 · 履迹》', subtitle: '设计从业十年的本质思考与履迹沉淀', cover: '/d5321b96-68d3-433e-b0ba-538abd7ccff6.png', excerpt: 'CMF 不是颜色、材料、表面处理的简单叠加，而是产品感知质量的系统科学。当 AI Agent 开始理解物理世界，设计师的角色正被重新定义——这是一场关于感知与智能的深层对话。', url: '#' },
+  { title: '《送别 2025 · 启程》', subtitle: '技术跃迁与跨界破局', cover: './微信图片_20260701150324_178_59.jpg', excerpt: '从产品设计到产品经理的跨越，AI 工具链重塑工作流的实战记录。这一年，将意图理解与硬件约束深度耦合，在不确定中寻找确定性的方法论沉淀。', url: '#' },
+  { title: '《送别 2024 · 履迹》', subtitle: '设计从业十年的本质思考与履迹沉淀', cover: './d5321b96-68d3-433e-b0ba-538abd7ccff6.png', excerpt: 'CMF 不是颜色、材料、表面处理的简单叠加，而是产品感知质量的系统科学。当 AI Agent 开始理解物理世界，设计师的角色正被重新定义——这是一场关于感知与智能的深层对话。', url: '#' },
 ]
 
 // ---- Panel 4: 荣誉 ----
@@ -265,7 +265,7 @@ function ResiliencePanel() {
 
       {/* Left 58% — 轨迹.jpg 纯橙线 (深灰背景→纯黑→透明) */}
       <div className="w-full lg:w-[58%] h-full flex items-center justify-center overflow-hidden bg-transparent">
-        <img src="/轨迹.jpg" alt=""
+        <img src="./轨迹.jpg" alt=""
           className="w-full h-full object-contain select-none pointer-events-none scale-x-[1.3]"
           style={{
             filter: 'contrast(3) brightness(0.6) sepia(1) saturate(30) hue-rotate(10deg) brightness(1.4)',
@@ -278,7 +278,7 @@ function ResiliencePanel() {
 
         {/* Cycling */}
         <div className="relative rounded-2xl overflow-hidden group/sport border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-center">
-          <img src="/骑行.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+          <img src="./骑行.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-black/15" />
           <div className="relative z-10">
             <span className="font-mono uppercase text-[10px] tracking-widest text-orange-500">CYCLING</span>
@@ -292,7 +292,7 @@ function ResiliencePanel() {
 
         {/* Marathon */}
         <div className="relative rounded-2xl overflow-hidden group/sport border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-center">
-          <img src="/马拉松.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+          <img src="./马拉松.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-black/15" />
           <div className="relative z-10">
             <span className="font-mono uppercase text-[10px] tracking-widest text-orange-500">MARATHON</span>
@@ -306,7 +306,7 @@ function ResiliencePanel() {
 
         {/* Trail Running */}
         <div className="relative rounded-2xl overflow-hidden group/sport border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-center">
-          <img src="/越野跑4.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+          <img src="./越野跑4.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-black/15" />
           <div className="relative z-10">
             <span className="font-mono uppercase text-[10px] tracking-widest text-orange-500">TRAIL RUNNING</span>
@@ -337,7 +337,7 @@ function InsightsPanel() {
             <span className="absolute top-3 left-3 z-20 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md text-[11px] font-mono tracking-[0.12em] uppercase shadow-sm backdrop-blur-sm">
               2025记录
             </span>
-            <img src="/那拉提.png" alt="" className="w-full aspect-[16/10] object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105" />
+            <img src="./那拉提.png" alt="" className="w-full aspect-[16/10] object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105" />
             <div className="p-4 flex flex-col gap-2">
               <h4 className="text-[14px] font-serif italic text-primary/80 leading-[1.5]" style={{fontFamily:"'Instrument Serif', Georgia, serif"}}>《送别 2025 · 启程》</h4>
               <p className="text-xs text-emerald-400/45 font-mono tracking-[0.03em]">启程</p>
@@ -352,7 +352,7 @@ function InsightsPanel() {
             <span className="absolute top-3 left-3 z-20 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md text-[11px] font-mono tracking-[0.12em] uppercase shadow-sm backdrop-blur-sm">
               2024记录
             </span>
-            <img src="/奥地利1.png" alt="" className="w-full aspect-[16/10] object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105" />
+            <img src="./奥地利1.png" alt="" className="w-full aspect-[16/10] object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105" />
             <div className="p-4 flex flex-col gap-2">
               <h4 className="text-[14px] font-serif italic text-primary/80 leading-[1.5]" style={{fontFamily:"'Instrument Serif', Georgia, serif"}}>《送别 2024 · 履迹》</h4>
               <p className="text-xs text-emerald-400/45 font-mono tracking-[0.03em]">履迹</p>
@@ -481,22 +481,22 @@ const GALLERY_CARDS = [
   {
     id: 'photography', num: '01', title: 'PHOTOGRAPHY & LENS',
     desc: '探索世界与全球化视野，在跨文化体验中解构多元生活方式；捕捉光影瞬间，审美共塑镜头艺术表达。',
-    bgImg: '/多洛米蒂2.jpg',
+    bgImg: './多洛米蒂2.jpg',
   },
   {
     id: 'resilience', num: '02', title: 'KINETIC RESILIENCE',
     desc: '坚韧品格与户外世界，向内修炼与卓越追求。',
-    bgImg: '/骑行.jpg',
+    bgImg: './骑行.jpg',
   },
   {
     id: 'insights', num: '03', title: 'MONOLOGUE & INSIGHTS',
     desc: '对世界与生活的持续思考。',
-    bgImg: '/瑞士.jpg',
+    bgImg: './瑞士.jpg',
   },
   {
     id: 'honors', num: '04', title: 'OTHER HONORS',
     desc: '专业领域的闪光，继续前行的底气。',
-    bgImg: '/多洛米蒂.jpg',
+    bgImg: './多洛米蒂.jpg',
   },
 ]
 

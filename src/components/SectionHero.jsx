@@ -103,7 +103,7 @@ export default function SectionHero() {
                     rgba(18, 28, 12, 0.04) 50%,
                     rgba(22, 35, 16, 0.10) 100%
                   ),
-                  url('/微信图片_20260701150715_179_59.jpg')
+                  url('./微信图片_20260701150715_179_59.jpg')
                 `,
                 backgroundSize: 'auto, cover',
                 backgroundPosition: 'center',

@@ -4,11 +4,11 @@ import { useState } from 'react'
    数据层 —— 5 段履历，全量固化，一个都不能少
    ============================================================ */
 const MILESTONES = [
-  { date: '2018.09 - 2022.06', label: '北京林业大学', sub: '艺术设计学士', logo: '/bjfu logo.png' },
-  { date: '2023.09 - 2024.09', label: '米兰理工大学', sub: '双学位硕士',     logo: '/polimi logo.jpg' },
-  { date: '2022.09 - 2025.06', label: '清华大学',     sub: '设计学硕士',     logo: '/thu logo.jpg' },
-  { date: '2025.07 - 2025.12', label: '顾家家居',     sub: '产品设计',       logo: '/kuka logo.png' },
-  { date: '2025.12 - 至今',    label: '顾家家居',     sub: '产品经理',       logo: '/kuka logo.png' },
+  { date: '2018.09 - 2022.06', label: '北京林业大学', sub: '艺术设计学士', logo: './bjfu logo.png' },
+  { date: '2023.09 - 2024.09', label: '米兰理工大学', sub: '双学位硕士',     logo: './polimi logo.jpg' },
+  { date: '2022.09 - 2025.06', label: '清华大学',     sub: '设计学硕士',     logo: './thu logo.jpg' },
+  { date: '2025.07 - 2025.12', label: '顾家家居',     sub: '产品设计',       logo: './kuka logo.png' },
+  { date: '2025.12 - 至今',    label: '顾家家居',     sub: '产品经理',       logo: './kuka logo.png' },
 ]
 
 const CARDS = [
@@ -18,7 +18,7 @@ const CARDS = [
       '环境设计创新实验班本科，全面筑牢人居环境与硬件设计底层地基',
       '专业课绩点 90/100，在校期间获得人居环境设计学年奖金奖（前 2%）、亚洲设计学年奖银奖',
     ],
-    img: '/北林1.jpg',
+    img: './北林1.jpg',
   },
   {
     title: '米兰理工大学', subtitle: '双学位硕士', badge: 'QS 全球艺术与设计 Top 7',
@@ -26,7 +26,7 @@ const CARDS = [
       '获国家留学基金委（CSC）公派全额奖学金资格，远赴欧洲顶级设计殿堂攻读双学位硕士',
       '深入欧洲前沿交互与多模态设计探索，核心课程绩点 29/30 通关',
     ],
-    img: '/米理.jpg',
+    img: './米理.jpg',
   },
   {
     title: '清华大学', subtitle: '设计学硕士', badge: '全国 No.1 | U.S. News 全球 No.6 / QS 全球 No.14',
@@ -34,7 +34,7 @@ const CARDS = [
       '依托清华大学顶尖的跨界综合资源，交叉培养艺术设计与前沿技术的双向底层能力',
       '学术绩点 GPA 3.84 / 4.00',
     ],
-    img: '/清华.jpg',
+    img: './清华.jpg',
   },
   {
     title: '顾家家居', subtitle: '产品设计', badge: '外贸核心研发',
@@ -42,7 +42,7 @@ const CARDS = [
       '任职外贸功能品类发展部，直接对接西欧、北美等高奢外贸核心市场需求',
       '主导 100+ 功能家居产品企划，全流程引入 AI 工具协作，设计选中率达 40%',
     ],
-    img: '/顾家.jpg',
+    img: './顾家.jpg',
   },
   {
     title: '顾家家居', subtitle: '产品经理', badge: '全栈体验驱动 PM',
@@ -50,7 +50,7 @@ const CARDS = [
       '快速跃升至创新洞察部产品经理，统筹核心技术路标明确与年度预研项目落地',
       '将 AI 意图理解、Prompt 调试与硬件电机强约束结合，成功为海外单品实现 $1000 零售高额溢价',
     ],
-    img: '/顾家.jpg',
+    img: './顾家.jpg',
   },
 ]
 

@@ -69,7 +69,7 @@ export default function App() {
               rgba(8,18,5,0.65) 100%
             ),
             radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(5,15,3,0.50) 100%),
-            url('/微信图片_20260701150324_178_59.jpg')
+            url('./微信图片_20260701150324_178_59.jpg')
           `,
           backgroundSize: 'auto, auto, cover',
           backgroundPosition: '0 0, 0 0, center',
