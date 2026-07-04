@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qingye Lin · Resume</title>
+
+<!-- Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheadings), Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ============================================================
+     全局 Tailwind 自定义配置
+     扩展主题色、阴影、毛玻璃工具类
+     ============================================================ -->
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      // ---------- 色彩体系 ----------
+      colors: {
+        // 苔藓绿系 — 主色调
+        moss: {
+          50:  '#f4f7f2',
+          100: '#e6efe1',
+          200: '#c8dcc0',
+          300: '#a3c496',
+          400: '#7eaa6e',
+          500: '#5f8f4e',
+          600: '#4a723c',
+          700: '#3c5b31',
+          800: '#324a2a',
+          900: '#2b3d24',
+          950: '#142014',
+        },
+        // 奶白绿 — 辅助色
+        cream: {
+          50:  '#fdfcf9',
+          100: '#faf7f0',
+          200: '#f5eedb',
+          300: '#ede0bc',
+          400: '#e3cd97',
+          500: '#d9b976',
+          600: '#c9a256',
+          700: '#a88545',
+          800: '#886b3c',
+          900: '#6f5934',
+        },
+      },
+
+      // ---------- 毛玻璃阴影 ----------
+      boxShadow: {
+        'glass-xs':  '0 2px 8px 0 rgba(20, 40, 20, 0.03)',
+        'glass-sm':  '0 4px 16px 0 rgba(20, 40, 20, 0.04)',
+        'glass':     '0 8px 32px 0 rgba(20, 40, 20, 0.06)',
+        'glass-lg':  '0 16px 48px 0 rgba(20, 40, 20, 0.08)',
+        'glass-xl':  '0 24px 64px 0 rgba(20, 40, 20, 0.10)',
+      },
+
+      // ---------- 自定义圆角 ----------
+      borderRadius: {
+        'glass': '1.25rem',
+        'glass-lg': '1.75rem',
+      },
+
+      // ---------- 毛玻璃背景透明度 ----------
+      backgroundOpacity: {
+        'glass-light': '0.10',
+        'glass-medium': '0.06',
+        'glass-heavy': '0.04',
+      },
+
+      // ---------- 过渡动画 ----------
+      transitionDuration: {
+        'glass': '300ms',
+      },
+
+      // ---------- 字体 ----------
+      fontFamily: {
+        serif:  ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans:   ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        body:   ['"Inter"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
+
+<!-- ============================================================
+     全局自定义 CSS
+     ============================================================ -->
+<style>
+  /* ===== CSS 自定义属性（Design Tokens） ===== */
+  :root {
+    /* --- 背景渐变色标 --- */
+    --bg-gradient-from: #e8f0e3;      /* 左上：浅绿奶白 */
+    --bg-gradient-via:  #b8ccaa;       /* 中段：柔和绿色 */
+    --bg-gradient-to:   #3c5230;       /* 右下：深苔藓绿 */
+
+    /* --- 毛玻璃卡片 --- */
+    --glass-bg:         rgba(255, 255, 255, 0.08);
+    --glass-bg-hover:   rgba(255, 255, 255, 0.12);
+    --glass-bg-active:  rgba(255, 255, 255, 0.04);
+    --glass-border:     rgba(255, 255, 255, 0.15);
+    --glass-border-hover: rgba(255, 255, 255, 0.25);
+    --glass-blur:       24px;
+    --glass-blur-heavy: 40px;
+    --glass-shadow:     0 8px 32px 0 rgba(20, 40, 20, 0.06);
+
+    /* --- 文字色 --- */
+    --text-primary:     rgba(255, 255, 255, 0.92);
+    --text-secondary:   rgba(200, 225, 195, 0.70);
+    --text-muted:       rgba(200, 225, 195, 0.45);
+
+    /* --- 噪点纹理 --- */
+    --noise-opacity: 0.02;
+
+    /* --- 动画 --- */
+    --ease-glass: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ===== 全局重置 ===== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-primary);
+  }
+
+  /* ============================================================
+     核心：真实图片背景 + 深色遮罩 + 噪点纹理
+     实现方式：底层图片 → 深色叠加层 → SVG feTurbulence 噪点
+     ============================================================ */
+  .bg-healing {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+
+    /* 第一层：真实背景图片，填充裁切 */
+    background-image: url('微信图片_20260701112339_175_59.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* 第二层：深色叠加以加深背景色调（增强沉浸感） */
+  .bg-healing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+      /* 整体暗化遮罩 */
+      linear-gradient(
+        180deg,
+        rgba(10, 25, 8, 0.35) 0%,
+        rgba(15, 30, 10, 0.45) 40%,
+        rgba(20, 35, 15, 0.55) 70%,
+        rgba(8, 18, 5, 0.65) 100%
+      ),
+      /* 四角暗角效果 */
+      radial-gradient(
+        ellipse 80% 60% at 50% 50%,
+        transparent 40%,
+        rgba(5, 15, 3, 0.50) 100%
+      );
+  }
+
+  /* 第三层：SVG 噪点纹理叠加（模拟磨砂颗粒感） */
+  .bg-healing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    /* 使用 SVG filter 生成高频噪点 */
+    filter: url('#noise-filter');
+    opacity: var(--noise-opacity);
+    background-color: transparent;
+  }
+
+  /* ============================================================
+     通用毛玻璃卡片工具类
+     ============================================================ */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius-glass, 1.25rem);
+    transition:
+      background 300ms var(--ease-glass),
+      border-color 300ms var(--ease-glass),
+      box-shadow 300ms var(--ease-glass),
+      transform 300ms var(--ease-glass);
+  }
+
+  .glass-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 12px 40px 0 rgba(20, 40, 20, 0.09);
+  }
+
+  /* 更深色变体 */
+  .glass-card-dark {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(var(--glass-blur-heavy));
+    -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 8px 32px 0 rgba(20, 40, 20, 0.04);
+  }
+
+  /* ============================================================
+     通用毛玻璃按钮
+     ============================================================ */
+  .glass-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;                    /* 全圆角胶囊按钮 */
+    box-shadow: 0 2px 12px 0 rgba(20, 40, 20, 0.04);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 250ms var(--ease-glass),
+      border-color 250ms var(--ease-glass),
+      box-shadow 250ms var(--ease-glass),
+      transform 200ms var(--ease-glass);
+  }
+
+  .glass-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 6px 20px 0 rgba(20, 40, 20, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .glass-btn:active {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(20, 40, 20, 0.03);
+    transform: translateY(0);
+  }
+
+  /* 主色强调按钮 — 带微弱的绿色光泽 */
+  .glass-btn-primary {
+    background: rgba(130, 170, 110, 0.22);
+    border-color: rgba(180, 210, 160, 0.30);
+    color: #fff;
+    box-shadow:
+      0 2px 12px 0 rgba(80, 130, 60, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-btn-primary:hover {
+    background: rgba(140, 185, 115, 0.30);
+    border-color: rgba(200, 225, 180, 0.40);
+    box-shadow:
+      0 6px 24px 0 rgba(80, 130, 60, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* 小尺寸按钮 */
+  .glass-btn-sm {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+  }
+
+  /* 大尺寸按钮 */
+  .glass-btn-lg {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    border-radius: 9999px;
+  }
+
+  /* ============================================================
+     辅助工具类
+     ============================================================ */
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  /* 微妙的入场动画 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s var(--ease-glass) both;
+  }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  /* 滚动条美化 */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.20);
+  }
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+
+  <!-- ============================================================
+       SVG 滤镜定义（隐藏，仅供 CSS filter: url() 引用）
+       包含：噪点纹理、毛玻璃模糊
+       ============================================================ -->
+  <svg style="position:absolute;width:0;height:0;pointer-events:none;" aria-hidden="true">
+    <defs>
+      <!--
+        噪点纹理滤镜
+        feTurbulence 生成高频 Perlin 噪声
+        feColorMatrix 映射到灰度 → 模拟胶片颗粒感
+      -->
+      <filter id="noise-filter" x="0" y="0" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="1.4"
+          numOctaves="3"
+          stitchTiles="stitch"
+          result="noise"
+        />
+        <feColorMatrix
+          type="saturate"
+          values="0"
+          in="noise"
+          result="grayNoise"
+        />
+        <feBlend
+          in="SourceGraphic"
+          in2="grayNoise"
+          mode="multiply"
+        />
+      </filter>
+
+      <!-- 更细腻的噪点（用于卡片内部纹理） -->
+      <filter id="noise-fine" x="0" y="0" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="1.2"
+          numOctaves="3"
+          stitchTiles="stitch"
+          result="noise"
+        />
+        <feColorMatrix
+          type="saturate"
+          values="0"
+          in="noise"
+          result="grayNoise"
+        />
+        <feBlend
+          in="SourceGraphic"
+          in2="grayNoise"
+          mode="multiply"
+        />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ============================================================
+       全屏背景层（磨砂噪点径向渐变）
+       ============================================================ -->
+  <div class="bg-healing" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       内容层
+       ============================================================ -->
+  <main class="relative z-10 w-full max-w-4xl mx-auto px-6 py-12 flex flex-col items-center gap-10">
+
+    <!-- ======== 头像 / 姓名区域 ======== -->
+    <section class="flex flex-col items-center gap-5 animate-fade-in-up">
+
+      <!-- 头像容器：毛玻璃圆形 -->
+      <div class="glass-card w-28 h-28 rounded-full flex items-center justify-center
+                  shadow-glass-lg"
+           style="--radius-glass: 9999px;">
+        <span class="text-3xl font-serif text-primary/80 font-medium italic">QL</span>
+      </div>
+
+      <!-- 姓名 + 头衔 -->
+      <div class="text-center space-y-2">
+        <h1 class="text-4xl font-serif italic tracking-wide text-primary">
+          Qingye Lin
+        </h1>
+        <p class="text-sm text-secondary tracking-wider" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          Full-stack Developer &amp; Designer
+        </p>
+      </div>
+    </section>
+
+    <!-- ======== 个人标签 ======== -->
+    <section class="flex flex-wrap items-center justify-center gap-2.5 animate-fade-in-up animate-delay-100">
+      <span class="glass-card-dark px-4 py-1.5 text-xs text-secondary rounded-full"
+            style="--radius-glass: 9999px; font-family: 'Plus Jakarta Sans', sans-serif;">
+        Frontend Architecture
+      </span>
+      <span class="glass-card-dark px-4 py-1.5 text-xs text-secondary rounded-full"
+            style="--radius-glass: 9999px; font-family: 'Plus Jakarta Sans', sans-serif;">
+        UI/UX Design
+      </span>
+      <span class="glass-card-dark px-4 py-1.5 text-xs text-secondary rounded-full"
+            style="--radius-glass: 9999px; font-family: 'Plus Jakarta Sans', sans-serif;">
+        Creative Direction
+      </span>
+      <span class="glass-card-dark px-4 py-1.5 text-xs text-secondary rounded-full"
+            style="--radius-glass: 9999px; font-family: 'Plus Jakarta Sans', sans-serif;">
+        Open Source
+      </span>
+    </section>
+
+    <!-- ======== 经历卡片组（三栏网格） ======== -->
+    <section class="w-full grid grid-cols-1 md:grid-cols-3 gap-5 animate-fade-in-up animate-delay-200">
+
+      <!-- 卡片 1：教育背景 -->
+      <div class="glass-card p-6 space-y-3">
+        <h3 class="text-sm font-semibold text-primary tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Education</h3>
+        <div class="space-y-1.5">
+          <p class="text-xs font-medium text-primary/85" style="font-family: 'Plus Jakarta Sans', sans-serif;">Zhejiang University</p>
+          <p class="text-[11px] text-secondary">B.S. in Computer Science &middot; 2018 – 2022</p>
+          <p class="text-[11px] text-muted leading-relaxed">
+            Honors Graduate, GPA 3.8/4.0, ACM-ICPC Regional Silver Medalist
+          </p>
+        </div>
+      </div>
+
+      <!-- 卡片 2：工作经历 -->
+      <div class="glass-card p-6 space-y-3">
+        <h3 class="text-sm font-semibold text-primary tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Experience</h3>
+        <div class="space-y-1.5">
+          <p class="text-xs font-medium text-primary/85" style="font-family: 'Plus Jakarta Sans', sans-serif;">ByteDance</p>
+          <p class="text-[11px] text-secondary">Frontend Engineer &middot; 2022 – Present</p>
+          <p class="text-[11px] text-muted leading-relaxed">
+            Building internal design systems and tools serving 2,000+ designers
+          </p>
+        </div>
+      </div>
+
+      <!-- 卡片 3：技能栈 -->
+      <div class="glass-card p-6 space-y-3">
+        <h3 class="text-sm font-semibold text-primary tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Tech Stack</h3>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">React</span>
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">TypeScript</span>
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">Next.js</span>
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">Tailwind CSS</span>
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">Node.js</span>
+          <span class="text-[10px] text-secondary bg-white/5 px-2 py-0.5 rounded-md border border-white/5">Figma</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== "关于我" 大卡片 ======== -->
+    <section class="w-full animate-fade-in-up animate-delay-300">
+      <div class="glass-card p-7 space-y-4">
+        <h3 class="text-sm font-semibold text-primary tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">About</h3>
+        <p class="text-sm text-secondary leading-relaxed">
+          I believe technology should feel like nature — quietly present, unassuming yet powerful.
+          I craft digital experiences that are clean, calm, and intentional, where every pixel
+          conveys a sense of order and tranquility. Outside of work, you'll find me hiking through
+          mountain trails, capturing light and shadow through a lens.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         毛玻璃按钮组件展示区
+         ============================================================ -->
+    <section class="w-full space-y-5 animate-fade-in-up animate-delay-400">
+
+      <!-- 分组标题 -->
+      <div class="flex items-center gap-3">
+        <div class="h-px flex-1 bg-white/8"></div>
+        <span class="text-[11px] text-muted tracking-widest uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif;">Button Variants</span>
+        <div class="h-px flex-1 bg-white/8"></div>
+      </div>
+
+      <!-- 按钮 Demo 面板 -->
+      <div class="glass-card p-7 space-y-6">
+        <p class="text-xs text-muted" style="font-family: 'Plus Jakarta Sans', sans-serif;">Glassmorphism &middot; Interactive States</p>
+
+        <!-- 行 1：默认尺寸 -->
+        <div class="flex flex-wrap items-end gap-4">
+          <!-- 默认按钮 -->
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">.glass-btn</span>
+            <button class="glass-btn">
+              <span>Download Resume</span>
+            </button>
+          </div>
+
+          <!-- 主色按钮 -->
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">.glass-btn-primary</span>
+            <button class="glass-btn glass-btn-primary">
+              <span>Get in Touch</span>
+            </button>
+          </div>
+
+          <!-- 仅图标 -->
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Icon-only</span>
+            <button class="glass-btn w-10 h-10 p-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </button>
+          </div>
+
+          <!-- 文字链接风格 -->
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Text link</span>
+            <button class="glass-btn" style="background:transparent;border-color:transparent;box-shadow:none;">
+              <span>View Full Resume &rarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 行 2：不同尺寸 -->
+        <div class="flex flex-wrap items-end gap-4">
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">.glass-btn-sm</span>
+            <button class="glass-btn glass-btn-sm">Small</button>
+          </div>
+
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Default</span>
+            <button class="glass-btn">Default</button>
+          </div>
+
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">.glass-btn-lg</span>
+            <button class="glass-btn glass-btn-lg">Large</button>
+          </div>
+
+          <!-- Ghost -->
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Ghost</span>
+            <button class="glass-btn"
+                    style="background:transparent;border-color:transparent;box-shadow:none;"
+                    onmouseenter="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)';"
+                    onmouseleave="this.style.background='transparent';this.style.borderColor='transparent';">
+              Ghost
+            </button>
+          </div>
+        </div>
+
+        <!-- 行 3：状态展示 -->
+        <div class="flex flex-wrap items-end gap-4">
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Disabled</span>
+            <button class="glass-btn opacity-40 pointer-events-none" disabled>
+              Locked
+            </button>
+          </div>
+
+          <div class="space-y-2">
+            <span class="block text-[10px] text-muted">Loading</span>
+            <button class="glass-btn">
+              <span class="inline-block w-3.5 h-3.5 border-2 border-white/20 border-t-white/80 rounded-full animate-spin"></span>
+              <span>Loading...</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======== 页脚 ======== -->
+    <footer class="text-[11px] text-muted text-center animate-fade-in-up animate-delay-500">
+      <p>&copy; 2026 Qingye Lin &middot; Crafted with clarity</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>

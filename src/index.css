@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS Design Tokens
+   ============================================================ */
+:root {
+  /* --- 毛玻璃卡片 --- */
+  --glass-bg:         rgba(255, 255, 255, 0.08);
+  --glass-bg-hover:   rgba(255, 255, 255, 0.12);
+  --glass-bg-active:  rgba(255, 255, 255, 0.04);
+  --glass-border:     rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+  --glass-blur:       24px;
+  --glass-blur-heavy: 40px;
+  --glass-shadow:     0 8px 32px 0 rgba(20, 40, 20, 0.06);
+
+  /* --- 文字色 --- */
+  --text-primary:     rgba(255, 255, 255, 0.92);
+  --text-secondary:   rgba(200, 225, 195, 0.70);
+  --text-muted:       rgba(200, 225, 195, 0.45);
+
+  /* --- 噪点纹理 --- */
+  --noise-opacity: 0.02;
+
+  /* --- 动画 --- */
+  --ease-glass: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   Base Layer
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-primary);
+  }
+
+  /* 滚动条美化 */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.20);
+  }
+}
+
+/* ============================================================
+   Component Layer — 毛玻璃系统
+   ============================================================ */
+@layer components {
+  /* --- 毛玻璃卡片 --- */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 1.25rem;
+    transition:
+      background 300ms var(--ease-glass),
+      border-color 300ms var(--ease-glass),
+      box-shadow 300ms var(--ease-glass),
+      transform 300ms var(--ease-glass),
+      opacity 300ms var(--ease-glass);
+  }
+
+  .glass-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 12px 40px 0 rgba(20, 40, 20, 0.09);
+  }
+
+  /* 更轻量变体 */
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(var(--glass-blur-heavy));
+    -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 8px 32px 0 rgba(20, 40, 20, 0.04);
+  }
+
+  /* --- 毛玻璃按钮 --- */
+  .glass-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    box-shadow: 0 2px 12px 0 rgba(20, 40, 20, 0.04);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 250ms var(--ease-glass),
+      border-color 250ms var(--ease-glass),
+      box-shadow 250ms var(--ease-glass),
+      transform 200ms var(--ease-glass);
+  }
+
+  .glass-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 6px 20px 0 rgba(20, 40, 20, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .glass-btn:active {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(20, 40, 20, 0.03);
+    transform: translateY(0);
+  }
+
+  /* 主色强调 */
+  .glass-btn-primary {
+    background: rgba(130, 170, 110, 0.22);
+    border-color: rgba(180, 210, 160, 0.30);
+    color: #fff;
+    box-shadow:
+      0 2px 12px 0 rgba(80, 130, 60, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-btn-primary:hover {
+    background: rgba(140, 185, 115, 0.30);
+    border-color: rgba(200, 225, 180, 0.40);
+    box-shadow:
+      0 6px 24px 0 rgba(80, 130, 60, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* --- 骨架屏 shimmer --- */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 0.75rem;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* --- 淡入上移动画 --- */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s var(--ease-glass) both;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- 放射状外发光（时间轴激活圆点） --- */
+  .glow-radial {
+    box-shadow:
+      0 0 6px 2px rgba(180, 210, 160, 0.25),
+      0 0 18px 4px rgba(160, 200, 140, 0.12),
+      0 0 36px 8px rgba(140, 180, 120, 0.06);
+  }
+}
+
+/* ============================================================
+   Utility Layer
+   ============================================================ */
+@layer utilities {
+  .text-primary   { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .text-muted     { color: var(--text-muted); }
+
+  /* 隐藏滚动条但保留滚动能力 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
